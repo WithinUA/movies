@@ -1,0 +1,66 @@
+<div class="container w-25 bg-light mt-3 border border-primary p-4">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Movie search</h2>
+            <form>
+                <div class="mb-3">
+                  <label for="movieTitle" class="form-label">Title</label>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    id="movieTitle"
+                    name="title"
+                    [(ngModel)]="title">
+                </div>
+                <div class="mb-3">
+                  <label for="movieYear" class="form-label">Year</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="movieYear"
+                    name="year"
+                    [(ngModel)]="year">
+                </div>
+                <div class="mb-3 form-check">
+                  <input 
+                    type="checkbox" 
+                    class="form-check-input" 
+                    id="descriptionToggle"
+                    name="descToggle"
+                    [(ngModel)]="descToggle">
+                  <label class="form-check-label" for="descriptionToggle">Full description</label>
+                </div>
+                <button 
+                type="submit" 
+                class="btn btn-primary w-100"
+                (click)="searchMovie()">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="response == true" class="card m-5">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="movie.poster" class="card-img-top" alt="poster">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title mb-4">{{movie.title}}</h5>
+          <h6 class="card-text">{{movie.director}}</h6>
+          <p class="card-text"><b>Year:</b> {{movie.year}} / Rate: {{movie.rate}}</p>
+          <p class="card-text"><b>Duration:</b> {{movie.duration}}</p>
+          <p class="card-text">{{movie.description}}</p>
+          <p class="card-text"><b>Actors:</b> {{movie.actors}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="response == false"
+  class="alert alert-warning w-50 d-flex" 
+  style="margin: 5rem auto"
+  role="alert">
+    No results found!
+</div>  
